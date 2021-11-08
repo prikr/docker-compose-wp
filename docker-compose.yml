@@ -2,12 +2,12 @@
   version: '3.3'
   services:
     phpmyadmin:
-      container_name: 'ekh-phpmyadmin'
+      container_name: 'PROJECTNAAM-phpmyadmin'
       image: 'phpmyadmin/phpmyadmin'
       links:
         - db
       environment:
-        PMA_HOST: ekh-wordpress-db
+        PMA_HOST: PROJECTNAAM-wordpress-db
         PMA_USER: root
         PMA_PASSWORD: secret
         UPLOAD_LIMIT: 300M
@@ -15,7 +15,7 @@
       ports:
         - 8080:80
     db:   
-      container_name: 'ekh-wordpress-db'
+      container_name: 'PROJECTNAAM-wordpress-db'
       image: 'mysql:5.7.16'
       volumes:
         - './data/mysql:/var/lib/mysql'
@@ -27,7 +27,7 @@
         MYSQL_USER: dev
         MYSQL_PASSWORD: secret
     wordpress:
-      container_name: 'ekh-wordpress'
+      container_name: 'PROJECTNAAM-wordpress'
       depends_on:
         - db
       image: 'wordpress:latest'
@@ -38,7 +38,7 @@
         WORDPRESS_DB_USER: dev
         WORDPRESS_DB_PASSWORD: secret
         WORDPRESS_DB_NAME: localdev
-        WORDPRESS_TABLE_PREFIX: ekhsite_
+        WORDPRESS_TABLE_PREFIX: PROJECTNAAMsite_
         WORDPRESS_DEBUG: 1
         XDEBUG_CONFIG: remote_host=host.docker.internal
         WORDPRESS_AUTH_KEY: 5f6ede1b94d25a2294e29eeba929a8c80a5ac0fb
@@ -63,8 +63,8 @@
           define( 'SMTP_USER',   'jasperprikrio@gmail.com' );    // Username to use for SMTP authentication
           define( 'SMTP_PASS',   'czgxnptkcutahstq' );       // Password to use for SMTP authentication
           define( 'SMTP_HOST',   'smtp.gmail.com' );    // The hostname of the mail server
-          define( 'SMTP_FROM',   'info@ekh.nl' ); // SMTP From email address
-          define( 'SMTP_NAME',   'ekh' );    // SMTP From name
+          define( 'SMTP_FROM',   'info@PROJECTNAAM.nl' ); // SMTP From email address
+          define( 'SMTP_NAME',   'PROJECTNAAM' );    // SMTP From name
           define( 'SMTP_PORT',   '465' );                  // SMTP port number - likely to be 25, 465 or 587
           define( 'SMTP_SECURE', 'ssl' );                 // Encryption system to use - ssl or tls
           define( 'SMTP_AUTH',    true );                 // Use SMTP authentication (true|false)
